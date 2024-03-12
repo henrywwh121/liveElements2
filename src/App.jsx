@@ -11,10 +11,10 @@ function App() {
         <TopMenu />
       </div>
       <div className="flex-1 flex">
-        <div className="w-1/6">
+        <div>
           <ToolsMenu />
         </div>
-        <div className="w-5/6 flex flex-col">
+        <div className="w-full flex flex-col">
           <Adjustments />
           <Canvas />
           <SubTools />
