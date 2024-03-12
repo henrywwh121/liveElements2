@@ -12,26 +12,19 @@ import { Tools } from "../Tools/ToolsConstants";
 import { useSelector } from "react-redux";
 
 const MINSCALE = 0.1;
-<<<<<<< HEAD
 const MAXSCALE = 1;
 const INITSCALE = 0.4;
-=======
-const MAXSCALE = 0.6;
->>>>>>> 2cf094fd8359094d2d538c1667023a7148bd8e04
+
 const MINWIDTH = 300;
 const MINHEIGHT = 300;
 
 const Canvas = () => {
-<<<<<<< HEAD
   const [scale, setScale] = useState(INITSCALE);
   const [targets, setTargets] = useState([]);
   const [elementsList, setElementsList] = useState([]);
 
   const mode = useSelector((state) => state.design.mode);
 
-=======
-  const [scale, setScale] = useState(MAXSCALE);
->>>>>>> 2cf094fd8359094d2d538c1667023a7148bd8e04
   const containerRef = useRef(null);
   const selectoRef = useRef(null);
   const moveableRef = useRef(null);
@@ -39,8 +32,6 @@ const Canvas = () => {
 
   useEffect(() => {
     if (!containerRef || !containerRef.current) return;
-<<<<<<< HEAD
-
     const resizeObserver = new ResizeObserver(() => {
       const { width, height } = containerRef.current.getBoundingClientRect();
       if (width > MINWIDTH && height > MINHEIGHT) {
@@ -51,16 +42,7 @@ const Canvas = () => {
             MINSCALE
         );
         setScale(Math.abs(calcScale));
-=======
-    const resizeObserver = new ResizeObserver(() => {
-      const { width, height } = containerRef.current.getBoundingClientRect();
-      console.log(width, height);
-      if (width / height < 16 / 9) {
-        const calcScale =
-          ((width - MINWIDTH) / (1600 - MINWIDTH)) * (MAXSCALE - MINSCALE) +
-          MINSCALE;
-        setScale(calcScale);
->>>>>>> 2cf094fd8359094d2d538c1667023a7148bd8e04
+
       } else {
         setScale(MINSCALE);
       }
@@ -68,7 +50,6 @@ const Canvas = () => {
     resizeObserver.observe(containerRef.current);
     return () => resizeObserver.disconnect();
   }, [containerRef]);
-<<<<<<< HEAD
 
   const canvasRect = useBoundingClientRect(canvasRef, scale);
   const { getTextBox } = useWriteText(
@@ -81,12 +62,6 @@ const Canvas = () => {
   return (
     <div
       className="flex-1 flex justify-center items-center selectableArea relative"
-=======
-
-  return (
-    <div
-      className="flex-1 relative flex justify-center items-center"
->>>>>>> 2cf094fd8359094d2d538c1667023a7148bd8e04
       ref={containerRef}
     >
       <div
@@ -98,13 +73,10 @@ const Canvas = () => {
           ref={canvasRef}
           onMouseDown={getTextBox}
         ></canvas>
-<<<<<<< HEAD
         <RenderElements elementsList={elementsList} moveableRef={moveableRef} />
         <div className="bg-sky-600 h-[150px] w-[150px] absolute bottom-0 left-0 target"></div>
         <div className="bg-sky-600 h-[150px] w-[150px] absolute bottom-0 right-5 target"></div>
-=======
-        <div className="bg-sky-600 h-[150px] w-[150px] absolute top-0 left-0"></div>
->>>>>>> 2cf094fd8359094d2d538c1667023a7148bd8e04
+
       </div>
 
       <Moveable
