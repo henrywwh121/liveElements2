@@ -10,7 +10,8 @@ export const Tools = {
 export const ToolsAttributes = {
   ICONSIZE: 30,
   ADJICONSIZE: 30,
-  TEXTCOLOR: "slate-300",
+  TEXTCOLOR: "text-white",
+  COLOR: "#000",
   TEXTWIDTH: 200,
   INITFONTSIZE: 50,
   INITTEXTWIDTH: 150,

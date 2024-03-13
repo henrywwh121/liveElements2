@@ -1,4 +1,5 @@
-import ToolsMenuBar from "./ToolsMenuBar";
+import ToolsMenuBar from "./ToolsMenuBar/ToolsMenuBar";
+import AllToolsDetail from "./AllToolsDetail/AllToolsDetail";
 
 const ToolsMenu = () => {
   return (
@@ -6,7 +7,9 @@ const ToolsMenu = () => {
       <div>
         <ToolsMenuBar />
       </div>
-      <div className="w-[300px]">{/* placeholder */}</div>
+      <div className="w-[300px]">
+        <AllToolsDetail />
+      </div>
     </div>
   );
 };

@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import Moveable from "react-moveable";
 import Selecto from "react-selecto";
 
@@ -7,9 +8,12 @@ import RenderElements from "./RenderElements";
 import useBoundingClientRect from "../../hooks/useBoundingClientRect";
 import useWriteText from "../../hooks/useWriteText";
 
+import { canvasMouseDown } from "./canvasMouseEvents";
+import { moveableResize, targetCount, targetsHasType } from "./moveableEvents";
+
 import { Tools } from "../Tools/ToolsConstants";
 
-import { useSelector } from "react-redux";
+import { setSelectedElements } from "../../features/elementsSlice";
 
 const MINSCALE = 0.1;
 const MAXSCALE = 1;
@@ -19,9 +23,10 @@ const MINWIDTH = 300;
 const MINHEIGHT = 300;
 
 const Canvas = () => {
+  const dispatch = useDispatch();
   const [scale, setScale] = useState(INITSCALE);
   const [targets, setTargets] = useState([]);
-  const [elementsList, setElementsList] = useState([]);
+  //const [elementsList, setElementsList] = useState([]);
 
   const mode = useSelector((state) => state.design.mode);
 
@@ -42,7 +47,6 @@ const Canvas = () => {
             MINSCALE
         );
         setScale(Math.abs(calcScale));
-
       } else {
         setScale(MINSCALE);
       }
@@ -55,8 +59,8 @@ const Canvas = () => {
   const { getTextBox } = useWriteText(
     canvasRect?.x,
     canvasRect?.y,
-    setElementsList,
-    scale
+    scale,
+    targets
   );
 
   return (
@@ -71,12 +75,11 @@ const Canvas = () => {
         <canvas
           className={`bg-[#00ff00] h-[1080px] w-[1920px] absolute`}
           ref={canvasRef}
-          onMouseDown={getTextBox}
+          onMouseDown={canvasMouseDown(getTextBox, mode)}
         ></canvas>
-        <RenderElements elementsList={elementsList} moveableRef={moveableRef} />
+        <RenderElements moveableRef={moveableRef} />
         <div className="bg-sky-600 h-[150px] w-[150px] absolute bottom-0 left-0 target"></div>
         <div className="bg-sky-600 h-[150px] w-[150px] absolute bottom-0 right-5 target"></div>
-
       </div>
 
       <Moveable
@@ -86,21 +89,26 @@ const Canvas = () => {
         resizable={true}
         verticalGuidelines={[canvasRect?.x - 360, canvasRect?.right - 360]}
         horizontalGuidelines={[canvasRect?.y - 100, canvasRect?.bottom - 100]}
+        keepRatio={targetCount(targets)}
         snappable={true}
         onClickGroup={(e) => {
           selectoRef.current.clickTarget(e.inputEvent, e.inputTarget);
         }}
-        onRender={(e) => {
-          e.target.style.cssText += e.cssText;
-        }}
+        // onRender={(e) => {
+        //   e.target.style.cssText += e.cssText;
+        // }}
         onRenderGroup={(e) => {
           e.events.forEach((ev) => {
             ev.target.style.cssText += ev.cssText;
           });
         }}
+        onDrag={(e) => {
+          e.target.style.transform = e.transform;
+        }}
         onResize={(e) => {
-          e.target.style.width = `${e.width}px`;
-          e.target.style.height = `${e.height}px`;
+          moveableResize(e, targets);
+        }}
+        onRotate={(e) => {
           e.target.style.transform = e.drag.transform;
         }}
       />
@@ -131,6 +139,7 @@ const Canvas = () => {
             });
           }
           setTargets(e.selected);
+          dispatch(setSelectedElements(e.selected));
         }}
       />
     </div>

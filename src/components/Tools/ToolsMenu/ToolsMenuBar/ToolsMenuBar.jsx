@@ -1,6 +1,6 @@
-import RectangleTool from "../RectangleTool/RectangleTool";
-import TextTool from "../TextTool/TextTool";
-import SelectTool from "../SelectTool/SelectTool";
+import RectangleTool from "./RectangleTool/RectangleTool";
+import TextTool from "./TextTool/TextTool";
+import SelectTool from "./SelectTool/SelectTool";
 
 const ToolsMenuBar = () => {
   return (
