@@ -13,6 +13,6 @@ export const ToolsAttributes = {
   TEXTCOLOR: "text-white",
   COLOR: "#000",
   TEXTWIDTH: 200,
-  INITFONTSIZE: 50,
-  INITTEXTWIDTH: 150,
+  INITFONTSIZE: 40,
+  INITTEXTWIDTH: 120,
 };

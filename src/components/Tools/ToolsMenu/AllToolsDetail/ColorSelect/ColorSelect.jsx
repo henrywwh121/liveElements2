@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import Circle from "@uiw/react-color-circle";
 import { useSelector } from "react-redux";
-import { hasSameAttribute } from "../../../../../util/helper";
+import { hasSameAttribute, rgbToHex } from "../../../../../util/helper";
 
 const ColorSelect = () => {
   const selectedElements = useSelector(
     (state) => state.elements.selectedElements
   );
 
-  const sameColor = hasSameAttribute(selectedElements, "color");
+  const sameColor = rgbToHex(hasSameAttribute(selectedElements, "color"));
   const [hex, setHex] = useState();
 
   useEffect(() => {

@@ -1,4 +1,4 @@
-const rgbToHex = (rgb) => {
+export const rgbToHex = (rgb) => {
   const regex = /(\d{1,3}),\s*(\d{1,3}),\s*(\d{1,3})/;
   const [, r, g, b] = regex.exec(rgb) || [];
   if (r === undefined || g === undefined || b === undefined) {
@@ -14,8 +14,7 @@ export const hasSameAttribute = (selected, attribute) => {
     return null;
   }
   if (selected.length == 1) {
-    console.log(selected[0].style[attribute]);
-    return rgbToHex(selected[0].style[attribute]);
+    return selected[0].style[attribute];
   } else {
     const common = selected[0].style[attribute];
     let hasDifference = false;
@@ -25,6 +24,6 @@ export const hasSameAttribute = (selected, attribute) => {
         return false;
       }
     });
-    return hasDifference ? null : rgbToHex(common);
+    return hasDifference ? null : common;
   }
 };
