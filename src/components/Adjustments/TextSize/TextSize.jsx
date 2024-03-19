@@ -10,7 +10,7 @@ const TextSize = () => {
   );
 
   let sameSize = hasSameAttribute(selectedElements, "fontSize");
-  sameSize = sameSize && sameSize.replace("px", "");
+  sameSize = sameSize ? sameSize.replace("px", "") : "--";
   const [fontSize, setFontSize] = useState();
 
   useEffect(() => {
