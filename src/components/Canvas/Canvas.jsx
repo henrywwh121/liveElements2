@@ -94,12 +94,14 @@ const Canvas = () => {
         onClickGroup={(e) => {
           selectoRef.current.clickTarget(e.inputEvent, e.inputTarget);
         }}
-        // onRender={(e) => {
-        //   e.target.style.cssText += e.cssText;
-        // }}
-        onRenderGroup={(e) => {
+        onDragGroup={(e) => {
           e.events.forEach((ev) => {
-            ev.target.style.cssText += ev.cssText;
+            ev.target.style.transform = ev.transform;
+          });
+        }}
+        onResizeGroup={(e) => {
+          e.events.forEach((ev) => {
+            moveableResize(ev, targets);
           });
         }}
         onDrag={(e) => {
