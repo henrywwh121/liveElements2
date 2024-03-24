@@ -1,4 +1,6 @@
 import { Tools } from "../Tools/ToolsConstants";
+import store from "../../app/store";
+import { setSelectedElementsValue } from "../../features/elementsSlice";
 
 export const targetCount = (targets) => {
   // if (targets.length == 1 && targets[0].classList[0].split("-")[0] == "TEXT") {
@@ -20,7 +22,15 @@ export const targetsHasType = (targets, type) => {
   return false;
 };
 
-export const moveableResize = (e, targets, adjustTextWithScale) => {
+export const targetIds = (targets) => {
+  const idList = [];
+  for (const target of targets) {
+    idList.push(target.classList[0]);
+  }
+  return idList;
+};
+
+export const moveableResize = (e, targets) => {
   if (targetsHasType(targets, "TEXT")) {
     if (e.direction[1] == 0) {
       //resize horizontally
@@ -34,10 +44,23 @@ export const moveableResize = (e, targets, adjustTextWithScale) => {
       e.target.style.height = `${e.width / e.startRatio}px`;
       e.target.style.transform = e.drag.transform;
       e.target.style.fontSize = `${originFontSize * ratio}px`;
+      store.dispatch(
+        setSelectedElementsValue({
+          id: [e.target.classList[0]],
+          attribute: "fontSize",
+          value: +originFontSize * ratio,
+        })
+      );
     }
   } else {
     e.target.style.height = `${e.height}px`;
     e.target.style.width = `${e.width}px`;
     e.target.style.transform = e.drag.transform;
+  }
+};
+
+export const moveableResizeEnd = (e, targets) => {
+  if (targetsHasType(targets, "TEXT")) {
+    e.target.style.height = "";
   }
 };

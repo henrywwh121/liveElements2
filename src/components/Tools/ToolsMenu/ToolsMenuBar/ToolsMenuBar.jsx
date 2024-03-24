@@ -1,6 +1,7 @@
 import RectangleTool from "./RectangleTool/RectangleTool";
 import TextTool from "./TextTool/TextTool";
 import SelectTool from "./SelectTool/SelectTool";
+import ImageTool from "./ImageTool/ImageTool";
 
 const ToolsMenuBar = () => {
   return (
@@ -8,6 +9,7 @@ const ToolsMenuBar = () => {
       <SelectTool />
       <TextTool />
       <RectangleTool />
+      <ImageTool />
     </div>
   );
 };

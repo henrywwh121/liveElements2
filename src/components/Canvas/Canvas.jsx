@@ -7,13 +7,21 @@ import RenderElements from "./RenderElements";
 
 import useBoundingClientRect from "../../hooks/useBoundingClientRect";
 import useWriteText from "../../hooks/useWriteText";
+import useDropImage from "../../hooks/useDropImage";
 
 import { canvasMouseDown } from "./canvasMouseEvents";
-import { moveableResize, targetCount, targetsHasType } from "./moveableEvents";
+import {
+  moveableResize,
+  targetCount,
+  moveableResizeEnd,
+} from "./moveableEvents";
 
 import { Tools } from "../Tools/ToolsConstants";
 
-import { setSelectedElements } from "../../features/elementsSlice";
+import {
+  setSelectedElements,
+  setSelectedElementsValue,
+} from "../../features/elementsSlice";
 
 const MINSCALE = 0.1;
 const MAXSCALE = 1;
@@ -29,6 +37,7 @@ const Canvas = () => {
   //const [elementsList, setElementsList] = useState([]);
 
   const mode = useSelector((state) => state.design.mode);
+  const dragImage = useSelector((state) => state.design.selectedImage);
 
   const containerRef = useRef(null);
   const selectoRef = useRef(null);
@@ -62,6 +71,12 @@ const Canvas = () => {
     scale,
     targets
   );
+  const { dropImage } = useDropImage(
+    dragImage,
+    canvasRect?.x,
+    canvasRect?.y,
+    scale
+  );
 
   return (
     <div
@@ -76,10 +91,12 @@ const Canvas = () => {
           className={`bg-[#00ff00] h-[1080px] w-[1920px] absolute`}
           ref={canvasRef}
           onMouseDown={canvasMouseDown(getTextBox, mode)}
+          onDrop={dropImage}
+          onDragOver={(e) => {
+            e.preventDefault();
+          }}
         ></canvas>
         <RenderElements moveableRef={moveableRef} />
-        <div className="bg-sky-600 h-[150px] w-[150px] absolute bottom-0 left-0 target"></div>
-        <div className="bg-sky-600 h-[150px] w-[150px] absolute bottom-0 right-5 target"></div>
       </div>
 
       <Moveable
@@ -104,14 +121,25 @@ const Canvas = () => {
             moveableResize(ev, targets);
           });
         }}
+        onResizeGroupEnd={(e) => {
+          e.events.forEach((ev) => {
+            moveableResizeEnd(ev, targets);
+          });
+        }}
         onDrag={(e) => {
           e.target.style.transform = e.transform;
         }}
         onResize={(e) => {
           moveableResize(e, targets);
         }}
+        onResizeEnd={(e) => {
+          moveableResizeEnd(e, targets);
+        }}
         onRotate={(e) => {
           e.target.style.transform = e.drag.transform;
+        }}
+        onScale={(e) => {
+          console.log(e);
         }}
       />
       <Selecto

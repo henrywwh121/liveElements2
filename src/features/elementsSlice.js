@@ -23,9 +23,37 @@ const elementsSlice = createSlice({
     setSelectedElements: (state, action) => {
       state.selectedElements = action.payload;
     },
+    setSelectedElementsValue: (state, action) => {
+      const newElementsList = [...state.elementsList];
+      action.payload.id.forEach((id) => {
+        const elementsToUpdate = newElementsList.find((obj) => obj.id === id);
+        if (elementsToUpdate) {
+          elementsToUpdate[`${action.payload.attribute}`] =
+            +action.payload.value;
+        }
+      });
+      setElementList(newElementsList);
+    },
+    modifySelectedElementsValue: (state, action) => {
+      const newElementsList = [...state.elementsList];
+      action.payload.id.forEach((id) => {
+        const elementsToUpdate = newElementsList.find((obj) => obj.id === id);
+        const prevFontSize = elementsToUpdate[`${action.payload.attribute}`];
+        if (elementsToUpdate) {
+          elementsToUpdate[`${action.payload.attribute}`] =
+            +prevFontSize + action.payload.value;
+        }
+      });
+      setElementList(newElementsList);
+    },
   },
 });
 
 export default elementsSlice.reducer;
-export const { addElement, setElementList, setSelectedElements } =
-  elementsSlice.actions;
+export const {
+  addElement,
+  setElementList,
+  setSelectedElements,
+  setSelectedElementsValue,
+  modifySelectedElementsValue,
+} = elementsSlice.actions;

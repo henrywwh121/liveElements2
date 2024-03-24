@@ -40,7 +40,7 @@ const ColorSelect = () => {
         ]}
         color={hex}
         pointProps={{
-          style: { height: "35px", width: "35px", border: "1px solid #e8e8e8" },
+          style: { height: "35px", width: "35px" },
         }}
         onChange={(color) => {
           setHex(color.hex);
