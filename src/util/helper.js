@@ -30,6 +30,25 @@ export const hasSameAttribute = (selected, attribute) => {
   }
 };
 
+export const hasSameInnerText = (selected) => {
+  if (selected.length == 0) {
+    return null;
+  }
+  if (selected.length == 1) {
+    return selected[0].innnerText;
+  } else {
+    const common = selected[0].innnerText;
+    let hasDifference = false;
+    selected.forEach((element) => {
+      if (element.innnerText != common) {
+        hasDifference = true;
+        return false;
+      }
+    });
+    return hasDifference ? null : common;
+  }
+};
+
 export const hasSameAttributeInElementList = (
   selected,
   attribute,

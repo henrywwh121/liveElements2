@@ -1,6 +1,8 @@
 import { Tools } from "../Tools/ToolsConstants";
 import TextElement from "./TextElement/TextElement";
 import ImageElement from "./ImageElement/ImageElement";
+import RectangleElement from "./RectangleElement/RectangleElement";
+import MarqueeElement from "./MarqueeElement/MarqueeElement";
 import { useSelector } from "react-redux";
 
 const RenderElements = ({ moveableRef }) => {
@@ -21,6 +23,10 @@ const RenderElements = ({ moveableRef }) => {
           );
         } else if (element.type == Tools.IMAGE) {
           return <ImageElement key={element.id} data={element} />;
+        } else if (element.type == Tools.RECTANGLE) {
+          return <RectangleElement key={element.id} data={element} />;
+        } else if (element.type == Tools.MARQUEE) {
+          return <MarqueeElement key={element.id} data={element} />;
         }
       })}
     </>

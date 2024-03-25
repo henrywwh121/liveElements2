@@ -20,6 +20,7 @@ const TextElement = ({ data, moveableRef }) => {
         top: `${data.startY}px`,
         fontSize: `${data.fontSize}px`,
         width: `${data.width}px`,
+        lineHeight: `${data.lineHeight}`,
         wordWrap: "break-word",
         color: `${data.color}`,
       }}

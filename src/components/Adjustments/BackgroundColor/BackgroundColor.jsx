@@ -1,30 +1,27 @@
-import { MdOutlineFormatColorText } from "react-icons/md";
+import { IoMdColorFill } from "react-icons/io";
 import {
   AdjustmentsMode,
   AdjustmentsAttributes,
 } from "../AdjustmentsConstants";
 import { useDispatch, useSelector } from "react-redux";
 import { setAdjMode } from "../../../features/adjustmentSlice";
-import { setMode } from "../../../features/designSlice";
-import { Tools } from "../../Tools/ToolsConstants";
 
-const TextColor = () => {
+const BackgroundColor = () => {
   const dispatch = useDispatch();
   const adjMode = useSelector((state) => state.adjustment.adjMode);
 
   return (
-    <MdOutlineFormatColorText
+    <IoMdColorFill
       className={`${
-        adjMode == AdjustmentsMode.TEXTCOLOR &&
+        adjMode == AdjustmentsMode.BACKGROUNDCOLOR &&
         AdjustmentsAttributes.SELECTEDCOLOR
       } cursor-pointer p-1 rounded-lg`}
       size={AdjustmentsAttributes.ICONSIZE}
       onClick={() => {
-        dispatch(setAdjMode(AdjustmentsMode.TEXTCOLOR));
-        dispatch(setMode(Tools.SELECT));
+        dispatch(setAdjMode(AdjustmentsMode.BACKGROUNDCOLOR));
       }}
     />
   );
 };
 
-export default TextColor;
+export default BackgroundColor;

@@ -9,7 +9,11 @@ import useBoundingClientRect from "../../hooks/useBoundingClientRect";
 import useWriteText from "../../hooks/useWriteText";
 import useDropImage from "../../hooks/useDropImage";
 
-import { canvasMouseDown } from "./canvasMouseEvents";
+import {
+  canvasMouseDown,
+  canvasMouseMove,
+  canvasMouseStop,
+} from "./canvasMouseEvents";
 import {
   moveableResize,
   targetCount,
@@ -22,6 +26,8 @@ import {
   setSelectedElements,
   setSelectedElementsValue,
 } from "../../features/elementsSlice";
+import useDrawRectangle from "../../hooks/useDrawRectangle";
+import useDrawMarquee from "../../hooks/useDrawMarquee";
 
 const MINSCALE = 0.1;
 const MAXSCALE = 1;
@@ -61,6 +67,7 @@ const Canvas = () => {
       }
     });
     resizeObserver.observe(containerRef.current);
+
     return () => resizeObserver.disconnect();
   }, [containerRef]);
 
@@ -77,6 +84,11 @@ const Canvas = () => {
     canvasRect?.y,
     scale
   );
+  const { startDrawingRectangle, stopDrawingRectangle, drawRectangle } =
+    useDrawRectangle(canvasRect?.x, canvasRect?.y, scale);
+
+  const { startDrawingMarquee, stopDrawingMarquee, drawMarquee } =
+    useDrawMarquee(canvasRect?.x, canvasRect?.y, scale);
 
   return (
     <div
@@ -90,7 +102,18 @@ const Canvas = () => {
         <canvas
           className={`bg-[#00ff00] h-[1080px] w-[1920px] absolute`}
           ref={canvasRef}
-          onMouseDown={canvasMouseDown(getTextBox, mode)}
+          onMouseDown={canvasMouseDown(
+            getTextBox,
+            startDrawingRectangle,
+            startDrawingMarquee,
+            mode
+          )}
+          onMouseMove={canvasMouseMove(drawRectangle, drawMarquee, mode)}
+          onMouseUp={canvasMouseStop(
+            stopDrawingRectangle,
+            stopDrawingMarquee,
+            mode
+          )}
           onDrop={dropImage}
           onDragOver={(e) => {
             e.preventDefault();
@@ -137,9 +160,6 @@ const Canvas = () => {
         }}
         onRotate={(e) => {
           e.target.style.transform = e.drag.transform;
-        }}
-        onScale={(e) => {
-          console.log(e);
         }}
       />
       <Selecto

@@ -3,17 +3,19 @@ import Sketch from "@uiw/react-color-sketch";
 import { useSelector } from "react-redux";
 import { hasSameAttribute, rgbToHex } from "../../../../../util/helper";
 
-const ColorSelect = () => {
+const BackgroundColorSelect = () => {
   const selectedElements = useSelector(
     (state) => state.elements.selectedElements
   );
 
-  const sameColor = rgbToHex(hasSameAttribute(selectedElements, "color"));
+  const sameColor = rgbToHex(
+    hasSameAttribute(selectedElements, "backgroundColor")
+  );
   const [hex, setHex] = useState();
 
   useEffect(() => {
     selectedElements.forEach((element) => {
-      element.style.color = hex;
+      element.style.backgroundColor = hex;
     });
   }, [hex]);
 
@@ -34,4 +36,4 @@ const ColorSelect = () => {
   );
 };
 
-export default ColorSelect;
+export default BackgroundColorSelect;

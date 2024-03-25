@@ -25,11 +25,12 @@ const elementsSlice = createSlice({
     },
     setSelectedElementsValue: (state, action) => {
       const newElementsList = [...state.elementsList];
+      const isNotANumber = isNaN(action.payload.value);
+      const value = isNotANumber ? action.payload.value : +action.payload.value;
       action.payload.id.forEach((id) => {
         const elementsToUpdate = newElementsList.find((obj) => obj.id === id);
         if (elementsToUpdate) {
-          elementsToUpdate[`${action.payload.attribute}`] =
-            +action.payload.value;
+          elementsToUpdate[`${action.payload.attribute}`] = value;
         }
       });
       setElementList(newElementsList);

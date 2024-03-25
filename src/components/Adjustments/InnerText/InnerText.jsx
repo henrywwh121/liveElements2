@@ -1,4 +1,4 @@
-import { MdOutlineFormatColorText } from "react-icons/md";
+import { BsCardText } from "react-icons/bs";
 import {
   AdjustmentsMode,
   AdjustmentsAttributes,
@@ -8,23 +8,23 @@ import { setAdjMode } from "../../../features/adjustmentSlice";
 import { setMode } from "../../../features/designSlice";
 import { Tools } from "../../Tools/ToolsConstants";
 
-const TextColor = () => {
+const LineHeight = () => {
   const dispatch = useDispatch();
   const adjMode = useSelector((state) => state.adjustment.adjMode);
 
   return (
-    <MdOutlineFormatColorText
+    <BsCardText
       className={`${
-        adjMode == AdjustmentsMode.TEXTCOLOR &&
+        adjMode == AdjustmentsMode.INNERTEXT &&
         AdjustmentsAttributes.SELECTEDCOLOR
       } cursor-pointer p-1 rounded-lg`}
       size={AdjustmentsAttributes.ICONSIZE}
       onClick={() => {
-        dispatch(setAdjMode(AdjustmentsMode.TEXTCOLOR));
+        dispatch(setAdjMode(AdjustmentsMode.INNERTEXT));
         dispatch(setMode(Tools.SELECT));
       }}
     />
   );
 };
 
-export default TextColor;
+export default LineHeight;

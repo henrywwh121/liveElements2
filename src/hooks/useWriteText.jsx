@@ -18,6 +18,7 @@ const useWriteText = (canvasOffSetX, canvasOffSetY, scale) => {
         startY: (nativeEvent.clientY - canvasOffSetY) / scale,
         fontSize: ToolsAttributes.INITFONTSIZE,
         width: ToolsAttributes.TEXTWIDTH,
+        lineHeight: ToolsAttributes.LINEHEIGHT,
         color: ToolsAttributes.COLOR,
         order: elementOrder,
       })

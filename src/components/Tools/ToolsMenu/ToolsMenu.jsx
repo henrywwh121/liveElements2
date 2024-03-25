@@ -3,7 +3,7 @@ import AllToolsDetail from "./AllToolsDetail/AllToolsDetail";
 
 const ToolsMenu = () => {
   return (
-    <div className="bg-slate-500 h-full flex">
+    <div className="bg-slate-100 h-full flex">
       <div>
         <ToolsMenuBar />
       </div>

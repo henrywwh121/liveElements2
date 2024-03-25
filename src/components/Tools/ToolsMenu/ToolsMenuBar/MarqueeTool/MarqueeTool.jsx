@@ -1,4 +1,4 @@
-import { FaImage } from "react-icons/fa6";
+import { PiTextboxFill } from "react-icons/pi";
 import { useSelector, useDispatch } from "react-redux";
 import { setMode } from "../../../../../features/designSlice";
 import { Tools, ToolsAttributes } from "../../../ToolsConstants";
@@ -12,14 +12,14 @@ const ImageTool = () => {
   return (
     <div
       className={`cursor-pointer rounded-lg p-1 ${
-        mode == Tools.IMAGE ? ToolsAttributes.TEXTCOLOR : "text-black"
+        mode == Tools.MARQUEE ? ToolsAttributes.TEXTCOLOR : "text-black"
       }`}
       onClick={() => {
         dispatch(setAdjMode(AdjustmentsMode.NOTHING));
-        dispatch(setMode(Tools.IMAGE));
+        dispatch(setMode(Tools.MARQUEE));
       }}
     >
-      <FaImage size={ToolsAttributes.ICONSIZE} />
+      <PiTextboxFill size={ToolsAttributes.ICONSIZE} />
     </div>
   );
 };
