@@ -12,6 +12,7 @@ const MarqueeElement = ({ data }) => {
         backgroundColor: `${data.backgroundColor}`,
         color: `${data.color}`,
         fontSize: `${data.fontSize}px`,
+        fontWeight: `${data.fontWeight}`,
       }}
     >
       <span

@@ -5,6 +5,7 @@ export const Tools = {
   IMAGE: 3,
   MARQUEE: 4,
   FULLSCREEN: 5,
+  LAYER: 6,
 };
 
 export const ToolsAttributes = {
@@ -19,4 +20,5 @@ export const ToolsAttributes = {
   BACKGROUNDCOLOR: "#ff0000",
   MARQUEETEXT: "EXAMPLE EXAMPLE EXAMPLE",
   LINEHEIGHT: 1,
+  FONTWEIGHT: "bold",
 };

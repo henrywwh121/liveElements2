@@ -32,11 +32,13 @@ const InnerText = () => {
   };
 
   return (
-    <div>
+    <div className="h-full w-full flex flex-col gap-2">
+      <div className="font-bold text-lg">Inner Text</div>
       <textarea
         value={innerText}
         onChange={(e) => setInnerText(e.target.value)}
         onBlur={handleBlur}
+        className="w-full p-2 block rounded-lg h-[300px]"
       />
     </div>
   );

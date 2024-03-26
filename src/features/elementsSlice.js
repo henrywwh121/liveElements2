@@ -4,6 +4,7 @@ const initialState = {
   elementsList: [],
   elementOrder: 0,
   selectedElements: [],
+  containerRef: null,
 };
 
 const elementsSlice = createSlice({
@@ -47,6 +48,9 @@ const elementsSlice = createSlice({
       });
       setElementList(newElementsList);
     },
+    setContainerRef: (state, action) => {
+      state.containerRef = action.payload;
+    },
   },
 });
 
@@ -57,4 +61,5 @@ export const {
   setSelectedElements,
   setSelectedElementsValue,
   modifySelectedElementsValue,
+  setContainerRef,
 } = elementsSlice.actions;

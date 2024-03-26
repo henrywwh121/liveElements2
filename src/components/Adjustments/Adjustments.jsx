@@ -3,6 +3,7 @@ import TextSize from "./TextSize/TextSize";
 import BackgroundColor from "./BackgroundColor/BackgroundColor";
 import LineHeight from "./LineHeight/LineHeight";
 import InnerText from "./InnerText/InnerText";
+import FontWeight from "./FontWeight/FontWeight";
 import { useSelector } from "react-redux";
 import { targetsHasType } from "../Canvas/moveableEvents";
 
@@ -22,6 +23,7 @@ const Adjustments = () => {
       {(hasTEXT || hasMARQUEE) && <LineHeight />}
       {(hasRECT || hasMARQUEE) && <BackgroundColor />}
       {hasMARQUEE && <InnerText />}
+      {(hasTEXT || hasMARQUEE) && <FontWeight />}
     </div>
   );
 };

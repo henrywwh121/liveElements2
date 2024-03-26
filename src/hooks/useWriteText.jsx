@@ -21,6 +21,7 @@ const useWriteText = (canvasOffSetX, canvasOffSetY, scale) => {
         lineHeight: ToolsAttributes.LINEHEIGHT,
         color: ToolsAttributes.COLOR,
         order: elementOrder,
+        fontWeight: ToolsAttributes.FONTWEIGHT,
       })
     );
   };

@@ -24,10 +24,12 @@ import { Tools } from "../Tools/ToolsConstants";
 
 import {
   setSelectedElements,
-  setSelectedElementsValue,
+  setContainerRef,
 } from "../../features/elementsSlice";
+import { setAdjMode } from "../../features/adjustmentSlice";
 import useDrawRectangle from "../../hooks/useDrawRectangle";
 import useDrawMarquee from "../../hooks/useDrawMarquee";
+import { AdjustmentsMode } from "../Adjustments/AdjustmentsConstants";
 
 const MINSCALE = 0.1;
 const MAXSCALE = 1;
@@ -67,9 +69,13 @@ const Canvas = () => {
       }
     });
     resizeObserver.observe(containerRef.current);
-
+    dispatch(setContainerRef(containerRef));
     return () => resizeObserver.disconnect();
   }, [containerRef]);
+
+  useEffect(() => {
+    dispatch(setAdjMode(AdjustmentsMode.NOTHING));
+  }, [targets]);
 
   const canvasRect = useBoundingClientRect(canvasRef, scale);
   const { getTextBox } = useWriteText(

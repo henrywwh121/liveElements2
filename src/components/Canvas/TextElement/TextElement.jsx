@@ -23,6 +23,7 @@ const TextElement = ({ data, moveableRef }) => {
         lineHeight: `${data.lineHeight}`,
         wordWrap: "break-word",
         color: `${data.color}`,
+        fontWeight: `${data.fontWeight}`,
       }}
       onDoubleClick={() => {
         dispatch(setMode(Tools.TEXT));

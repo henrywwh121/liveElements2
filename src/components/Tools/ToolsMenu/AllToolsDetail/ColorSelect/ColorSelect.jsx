@@ -22,7 +22,7 @@ const ColorSelect = () => {
   }, [selectedElements]);
 
   return (
-    <div className="bg-white p-2 rounded-lg">
+    <div className="flex justify-center">
       <Sketch
         color={hex}
         disableAlpha={true}
