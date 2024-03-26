@@ -18,8 +18,11 @@ const elementsSlice = createSlice({
       state.elementsList.push(action.payload);
       state.elementOrder = state.elementOrder + 1;
     },
-    removeElement: (state, action) => {
-      //
+    removeElements: (state, action) => {
+      const deleteList = action.payload;
+      state.elementsList = state.elementsList.filter(
+        (e) => !deleteList.includes(e.id)
+      );
     },
     setSelectedElements: (state, action) => {
       state.selectedElements = action.payload;
@@ -59,6 +62,7 @@ export const {
   addElement,
   setElementList,
   setSelectedElements,
+  removeElements,
   setSelectedElementsValue,
   modifySelectedElementsValue,
   setContainerRef,

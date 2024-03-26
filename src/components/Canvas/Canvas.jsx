@@ -18,6 +18,7 @@ import {
   moveableResize,
   targetCount,
   moveableResizeEnd,
+  targetIds,
 } from "./moveableEvents";
 
 import { Tools } from "../Tools/ToolsConstants";
@@ -25,11 +26,14 @@ import { Tools } from "../Tools/ToolsConstants";
 import {
   setSelectedElements,
   setContainerRef,
+  removeElements,
 } from "../../features/elementsSlice";
 import { setAdjMode } from "../../features/adjustmentSlice";
 import useDrawRectangle from "../../hooks/useDrawRectangle";
 import useDrawMarquee from "../../hooks/useDrawMarquee";
 import { AdjustmentsMode } from "../Adjustments/AdjustmentsConstants";
+
+import { useKeyDown } from "../../hooks/useKeyDown";
 
 const MINSCALE = 0.1;
 const MAXSCALE = 1;
@@ -42,7 +46,6 @@ const Canvas = () => {
   const dispatch = useDispatch();
   const [scale, setScale] = useState(INITSCALE);
   const [targets, setTargets] = useState([]);
-  //const [elementsList, setElementsList] = useState([]);
 
   const mode = useSelector((state) => state.design.mode);
   const dragImage = useSelector((state) => state.design.selectedImage);
@@ -76,6 +79,12 @@ const Canvas = () => {
   useEffect(() => {
     dispatch(setAdjMode(AdjustmentsMode.NOTHING));
   }, [targets]);
+
+  useKeyDown(() => {
+    dispatch(removeElements(targetIds(targets)));
+    dispatch(setSelectedElements([]));
+    setTargets([]);
+  }, ["Delete"]);
 
   const canvasRect = useBoundingClientRect(canvasRef, scale);
   const { getTextBox } = useWriteText(

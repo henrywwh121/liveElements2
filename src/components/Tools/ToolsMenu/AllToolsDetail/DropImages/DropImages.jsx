@@ -12,7 +12,7 @@ const DropImages = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const images = Object.values(
-    import.meta.glob("/images/*.{png,jpg,jpeg,PNG,JPEG}", {
+    import.meta.glob("/images/*.{png,jpg,jpeg,PNG,JPEG,gif}", {
       eager: true,
       query: "?url",
       import: "default",
@@ -55,17 +55,25 @@ const DropImages = () => {
 
   return (
     <div className="p-3 flex flex-row gap-2 flex-wrap">
-      {pics.map((img) => (
-        <img
-          key={img.src}
-          src={img.src}
-          className="h-[90px] bg-slate-600 p-2 rounded-lg"
-          onDrag={() => {
-            dispatch(setSelectedImage(img));
-            dispatch(setIsDragging(true));
-          }}
-        />
-      ))}
+      {isLoading ? (
+        <div className="flex justify-center">
+          <div className="border-gray-300 h-12 w-12 animate-spin rounded-full border-8 border-t-[#063]" />
+        </div>
+      ) : (
+        <>
+          {pics.map((img) => (
+            <img
+              key={img.src}
+              src={img.src}
+              className="h-[90px] bg-slate-600 p-2 rounded-lg"
+              onDrag={() => {
+                dispatch(setSelectedImage(img));
+                dispatch(setIsDragging(true));
+              }}
+            />
+          ))}
+        </>
+      )}
     </div>
   );
 };
