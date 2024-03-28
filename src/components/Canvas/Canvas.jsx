@@ -24,15 +24,6 @@ import {
 import { Tools } from "../Tools/ToolsConstants";
 
 import {
-  FrameStyles,
-  Reflection,
-  useDimensions,
-  useMirror,
-  useRefs,
-  Window,
-} from "react-mirror";
-
-import {
   setSelectedElements,
   setContainerRef,
   removeElements,
@@ -41,7 +32,6 @@ import { setAdjMode } from "../../features/adjustmentSlice";
 import useDrawRectangle from "../../hooks/useDrawRectangle";
 import useDrawMarquee from "../../hooks/useDrawMarquee";
 import { AdjustmentsMode } from "../Adjustments/AdjustmentsConstants";
-
 import { useKeyDown } from "../../hooks/useKeyDown";
 
 const MINSCALE = 0.1;
@@ -88,6 +78,11 @@ const Canvas = () => {
   useEffect(() => {
     dispatch(setAdjMode(AdjustmentsMode.NOTHING));
   }, [targets]);
+
+  useEffect(() => {
+    const moveable = moveableRef.current;
+    moveable.updateRect();
+  }, [scale]);
 
   useKeyDown(() => {
     dispatch(removeElements(targetIds(targets)));

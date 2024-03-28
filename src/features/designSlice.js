@@ -24,4 +24,5 @@ const designSlice = createSlice({
 });
 
 export default designSlice.reducer;
-export const { setMode, setSelectedImage, setIsDragging } = designSlice.actions;
+export const { setMode, setSelectedImage, setIsDragging, setScale } =
+  designSlice.actions;

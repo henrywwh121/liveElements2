@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { setElementList } from "../../../../../features/elementsSlice";
-import { useEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import Thumb from "./Thumb";
 
 const Layer = () => {
@@ -10,7 +10,7 @@ const Layer = () => {
 
   const [list, setList] = useState(elementsList);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     setList(elementsList);
   }, [elementsList]);
 
