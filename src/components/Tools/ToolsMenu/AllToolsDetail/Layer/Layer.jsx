@@ -1,7 +1,8 @@
 import { useSelector, useDispatch } from "react-redux";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { setElementList } from "../../../../../features/elementsSlice";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Thumb from "./Thumb";
 
 const Layer = () => {
   const dispatch = useDispatch();
@@ -9,14 +10,17 @@ const Layer = () => {
 
   const [list, setList] = useState(elementsList);
 
+  useEffect(() => {
+    setList(elementsList);
+  }, [elementsList]);
+
   const swapElements = (e) => {
     const source = e.source.index;
     const destination = e.destination.index;
 
     const newList = [...list];
-    const temp = newList[source];
-    newList[source] = newList[destination];
-    newList[destination] = temp;
+    const itemToMove = newList.splice(source, 1)[0];
+    newList.splice(destination, 0, itemToMove);
 
     setList(newList);
     dispatch(setElementList(newList));
@@ -43,7 +47,7 @@ const Layer = () => {
                         {...provided.draggableProps}
                         {...provided.dragHandleProps}
                       >
-                        {ele.id}
+                        <Thumb element={ele} />
                       </div>
                     )}
                   </Draggable>

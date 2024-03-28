@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { setMode } from "../../../features/designSlice";
 import { Tools } from "../../Tools/ToolsConstants";
+import { setSelectedElementsValue } from "../../../features/elementsSlice";
 
 const TextElement = ({ data, moveableRef }) => {
   const dispatch = useDispatch();
@@ -14,7 +15,7 @@ const TextElement = ({ data, moveableRef }) => {
 
   return (
     <div
-      className={`${data.id} absolute target`}
+      className={`${data.id} absolute target no-underline`}
       style={{
         left: `${data.startX}px`,
         top: `${data.startY}px`,
@@ -29,12 +30,19 @@ const TextElement = ({ data, moveableRef }) => {
         dispatch(setMode(Tools.TEXT));
       }}
       onInput={(e) => {
-        setText(e.target.innerHTML);
+        setText(e.target.innerText);
+        dispatch(
+          setSelectedElementsValue({
+            id: [data.id],
+            attribute: "text",
+            value: e.target.innerText,
+          })
+        );
       }}
       suppressContentEditableWarning={true}
       contentEditable={true}
     >
-      Your Text
+      YOUR TEXT
     </div>
   );
 };

@@ -24,6 +24,15 @@ import {
 import { Tools } from "../Tools/ToolsConstants";
 
 import {
+  FrameStyles,
+  Reflection,
+  useDimensions,
+  useMirror,
+  useRefs,
+  Window,
+} from "react-mirror";
+
+import {
   setSelectedElements,
   setContainerRef,
   removeElements,

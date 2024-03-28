@@ -19,6 +19,7 @@ export const ToolsAttributes = {
   IMGWIDTH: 200,
   BACKGROUNDCOLOR: "#ff0000",
   MARQUEETEXT: "EXAMPLE EXAMPLE EXAMPLE",
+  TEXT: "YOUR TEXT",
   LINEHEIGHT: 1,
   FONTWEIGHT: "bold",
 };
