@@ -56,10 +56,36 @@ export const moveableResize = (e, targets) => {
     e.target.style.height = `${e.height}px`;
     e.target.style.width = `${e.width}px`;
     e.target.style.transform = e.drag.transform;
+
+    store.dispatch(
+      setSelectedElementsValue({
+        id: [e.target.classList[0]],
+        attribute: "width",
+        value: +e.width,
+      })
+    );
+
+    store.dispatch(
+      setSelectedElementsValue({
+        id: [e.target.classList[0]],
+        attribute: "height",
+        value: +e.height,
+      })
+    );
   }
 };
 
 export const moveableResizeEnd = (e, targets) => {
+  const width = e.target.style.width.replace("px", "");
+
+  store.dispatch(
+    setSelectedElementsValue({
+      id: [e.target.classList[0]],
+      attribute: "width",
+      value: +width,
+    })
+  );
+
   if (targetsHasType(targets, "TEXT")) {
     e.target.style.height = "";
   }

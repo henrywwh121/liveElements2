@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
 import Sketch from "@uiw/react-color-sketch";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { hasSameAttribute, rgbToHex } from "../../../../../util/helper";
+import { setSelectedElementsValue } from "../../../../../features/elementsSlice";
+import { targetIds } from "../../../../Canvas/moveableEvents";
 
 const BackgroundColorSelect = () => {
+  const dispatch = useDispatch();
   const selectedElements = useSelector(
     (state) => state.elements.selectedElements
   );
@@ -17,6 +20,14 @@ const BackgroundColorSelect = () => {
     selectedElements.forEach((element) => {
       element.style.backgroundColor = hex;
     });
+
+    dispatch(
+      setSelectedElementsValue({
+        id: targetIds(selectedElements),
+        attribute: "backgroundColor",
+        value: hex,
+      })
+    );
   }, [hex]);
 
   useEffect(() => {
@@ -27,7 +38,7 @@ const BackgroundColorSelect = () => {
     <div className="flex justify-center">
       <Sketch
         color={hex}
-        disableAlpha={true}
+        disableAlpha={false}
         onChange={(color) => {
           setHex(color.hex);
         }}

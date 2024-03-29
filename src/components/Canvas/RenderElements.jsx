@@ -8,6 +8,8 @@ import { useSelector } from "react-redux";
 const RenderElements = ({ moveableRef }) => {
   const elementsList = useSelector((state) => state.elements.elementsList);
 
+  console.log(elementsList);
+
   return (
     <>
       {elementsList.map((element) => {
