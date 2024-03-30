@@ -35,6 +35,13 @@ export const moveableResize = (e, targets) => {
     if (e.direction[1] == 0) {
       //resize horizontally
       e.target.style.width = `${e.width}px`;
+      store.dispatch(
+        setSelectedElementsValue({
+          id: [e.target.classList[0]],
+          attribute: "width",
+          value: +e.width,
+        })
+      );
     } else if (e.direction[0] != 0 && e.direction[1] != 0) {
       //resize diagonally and scale the fontSize
       const originFontSize = e.target.style.fontSize.replace("px", "");
@@ -51,6 +58,7 @@ export const moveableResize = (e, targets) => {
           value: +originFontSize * ratio,
         })
       );
+    } else {
     }
   } else {
     e.target.style.height = `${e.height}px`;
@@ -76,16 +84,6 @@ export const moveableResize = (e, targets) => {
 };
 
 export const moveableResizeEnd = (e, targets) => {
-  const width = e.target.style.width.replace("px", "");
-
-  store.dispatch(
-    setSelectedElementsValue({
-      id: [e.target.classList[0]],
-      attribute: "width",
-      value: +width,
-    })
-  );
-
   if (targetsHasType(targets, "TEXT")) {
     e.target.style.height = "";
   }

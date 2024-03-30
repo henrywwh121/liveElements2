@@ -18,11 +18,12 @@ const useWriteText = (canvasOffSetX, canvasOffSetY, scale) => {
         startY: (nativeEvent.clientY - canvasOffSetY) / scale,
         fontSize: ToolsAttributes.INITFONTSIZE,
         width: ToolsAttributes.TEXTWIDTH,
+        height: ToolsAttributes.TEXTHEIGHT,
         lineHeight: ToolsAttributes.LINEHEIGHT,
         color: ToolsAttributes.COLOR,
         order: elementOrder,
         fontWeight: ToolsAttributes.FONTWEIGHT,
-        text: ToolsAttributes.TEXT
+        text: ToolsAttributes.TEXT,
       })
     );
   };

@@ -21,6 +21,7 @@ const TextElement = ({ data, moveableRef }) => {
         top: `${data.startY}px`,
         fontSize: `${data.fontSize}px`,
         width: `${data.width}px`,
+        height: `${data.height}px`,
         lineHeight: `${data.lineHeight}`,
         wordWrap: "break-word",
         color: `${data.color}`,

@@ -1,19 +1,22 @@
+import { ThumbAttributes } from "../ThumbConstants";
+
 const RectangleThumb = ({ element }) => {
   let ratio = element.width / element.height;
-  let eleRatio = 240 / 60;
+  let eleRatio = ThumbAttributes.WIDTH / ThumbAttributes.HEIGHT;
+
   let width, height;
-  if (ratio >= 6) {
-    width = 240;
-    height = (element.height * 240) / element.width;
-  } else if (ratio > 1 && ratio < 6) {
-    height = 40;
-    width = (element.width * 40) / element.height;
+  if (ratio >= eleRatio) {
+    width = ThumbAttributes.WIDTH;
+    height = (element.height * ThumbAttributes.WIDTH) / element.width;
+  } else if (ratio > 1 && ratio < eleRatio) {
+    height = ThumbAttributes.HEIGHT;
+    width = (element.width * ThumbAttributes.HEIGHT) / element.height;
   } else if (ratio == 1) {
-    width = 40;
-    height = 40;
+    width = ThumbAttributes.HEIGHT;
+    height = ThumbAttributes.HEIGHT;
   } else {
-    height = 40;
-    width = (element.width * 40) / element.height;
+    height = ThumbAttributes.HEIGHT;
+    width = (element.width * ThumbAttributes.HEIGHT) / element.height;
   }
 
   return (
