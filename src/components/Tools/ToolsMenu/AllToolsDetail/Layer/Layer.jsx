@@ -42,7 +42,7 @@ const Layer = () => {
                   <Draggable key={ele.id} draggableId={ele.id} index={index}>
                     {(provided) => (
                       <div
-                        className="border-2 p-2 rounded-lg"
+                        className="border-2 p-2 rounded-lg bg-slate-300"
                         ref={provided.innerRef}
                         {...provided.draggableProps}
                         {...provided.dragHandleProps}

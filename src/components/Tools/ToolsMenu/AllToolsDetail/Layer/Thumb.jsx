@@ -2,6 +2,7 @@ import { Tools } from "../../../ToolsConstants";
 import ImageThumb from "./ImageThumb/ImageThumb";
 import TextThumb from "./TextThumb/TextThumb";
 import RectangleThumb from "./RectangleThumb/RectangleThumb";
+import MarqueeThumb from "./MarqueeThumb/MarqueeThumb";
 
 const Thumb = ({ element }) => {
   return (
@@ -12,6 +13,8 @@ const Thumb = ({ element }) => {
         <TextThumb element={element} />
       ) : element.type == Tools.RECTANGLE ? (
         <RectangleThumb element={element} />
+      ) : element.type == Tools.MARQUEE ? (
+        <MarqueeThumb element={element} />
       ) : (
         <></>
       )}

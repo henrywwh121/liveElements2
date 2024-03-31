@@ -58,7 +58,14 @@ export const moveableResize = (e, targets) => {
           value: +originFontSize * ratio,
         })
       );
-    } else {
+
+      store.dispatch(
+        setSelectedElementsValue({
+          id: [e.target.classList[0]],
+          attribute: "width",
+          value: +e.width,
+        })
+      );
     }
   } else {
     e.target.style.height = `${e.height}px`;

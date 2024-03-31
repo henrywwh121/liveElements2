@@ -6,7 +6,7 @@ import { setSelectedElementsValue } from "../../../features/elementsSlice";
 
 const TextElement = ({ data, moveableRef }) => {
   const dispatch = useDispatch();
-  const [text, setText] = useState("YOUR TEXT");
+  const [text, setText] = useState(data.text);
 
   useEffect(() => {
     const moveable = moveableRef.current;
@@ -21,7 +21,6 @@ const TextElement = ({ data, moveableRef }) => {
         top: `${data.startY}px`,
         fontSize: `${data.fontSize}px`,
         width: `${data.width}px`,
-        height: `${data.height}px`,
         lineHeight: `${data.lineHeight}`,
         wordWrap: "break-word",
         color: `${data.color}`,
@@ -31,7 +30,6 @@ const TextElement = ({ data, moveableRef }) => {
         dispatch(setMode(Tools.TEXT));
       }}
       onInput={(e) => {
-        setText(e.target.innerText);
         dispatch(
           setSelectedElementsValue({
             id: [data.id],
@@ -39,11 +37,12 @@ const TextElement = ({ data, moveableRef }) => {
             value: e.target.innerText,
           })
         );
+        setText(e.target.innerText);
       }}
       suppressContentEditableWarning={true}
       contentEditable={true}
     >
-      YOUR TEXT
+      MY TEXT
     </div>
   );
 };
