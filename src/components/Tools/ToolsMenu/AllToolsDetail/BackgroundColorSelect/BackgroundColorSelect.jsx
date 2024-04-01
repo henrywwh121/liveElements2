@@ -18,7 +18,9 @@ const BackgroundColorSelect = () => {
 
   useEffect(() => {
     selectedElements.forEach((element) => {
-      element.style.backgroundColor = hex;
+      if (element.style.backgroundColor != "") {
+        element.style.backgroundColor = hex;
+      }
     });
 
     dispatch(

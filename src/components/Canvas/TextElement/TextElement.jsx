@@ -42,7 +42,7 @@ const TextElement = ({ data, moveableRef }) => {
       suppressContentEditableWarning={true}
       contentEditable={true}
     >
-      MY TEXT
+      YOUR TEXT
     </div>
   );
 };

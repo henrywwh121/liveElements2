@@ -22,6 +22,15 @@ export const targetsHasType = (targets, type) => {
   return false;
 };
 
+export const targetsAreType = (targets, type) => {
+  for (const target of targets) {
+    if (target.classList[0].split("-")[0] !== type) {
+      return false;
+    }
+  }
+  return true;
+};
+
 export const targetIds = (targets) => {
   const idList = [];
   for (const target of targets) {
@@ -91,7 +100,7 @@ export const moveableResize = (e, targets) => {
 };
 
 export const moveableResizeEnd = (e, targets) => {
-  if (targetsHasType(targets, "TEXT")) {
+  if (targetsAreType(targets, "TEXT")) {
     e.target.style.height = "";
   }
 };
