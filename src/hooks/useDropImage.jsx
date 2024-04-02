@@ -27,6 +27,7 @@ const useDropImage = (path, canvasOffSetX, canvasOffSetY, scale) => {
         width: ToolsAttributes.IMGWIDTH,
         height: (ToolsAttributes.IMGWIDTH / path.width) * path.height,
         order: elementOrder,
+        translate: "translate(0px,0px)",
       })
     );
 

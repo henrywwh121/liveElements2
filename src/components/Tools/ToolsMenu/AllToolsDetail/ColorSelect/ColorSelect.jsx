@@ -15,16 +15,18 @@ const ColorSelect = () => {
   const [hex, setHex] = useState();
 
   useEffect(() => {
-    selectedElements.forEach((element) => {
-      element.style.color = hex;
-    });
-    dispatch(
-      setSelectedElementsValue({
-        id: targetIds(selectedElements),
-        attribute: "color",
-        value: hex,
-      })
-    );
+    if (hex) {
+      selectedElements.forEach((element) => {
+        element.style.color = hex;
+      });
+      dispatch(
+        setSelectedElementsValue({
+          id: targetIds(selectedElements),
+          attribute: "color",
+          value: hex,
+        })
+      );
+    }
   }, [hex]);
 
   useEffect(() => {

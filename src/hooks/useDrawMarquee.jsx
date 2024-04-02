@@ -68,6 +68,7 @@ const useDrawMarquee = (canvasOffSetX, canvasOffSetY, scale) => {
         color: ToolsAttributes.COLOR,
         fontSize: ToolsAttributes.INITFONTSIZE,
         fontWeight: ToolsAttributes.FONTWEIGHT,
+        translate: "translate(0px,0px)",
       })
     );
   };

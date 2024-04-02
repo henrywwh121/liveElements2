@@ -64,6 +64,7 @@ const useDrawRectangle = (canvasOffSetX, canvasOffSetY, scale) => {
         width: width.current / scale,
         height: height.current / scale,
         backgroundColor: ToolsAttributes.BACKGROUNDCOLOR,
+        translate: "translate(0px,0px)",
       })
     );
   };

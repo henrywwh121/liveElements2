@@ -1,0 +1,139 @@
+[
+  {
+    "id": 0,
+    "name": "202404020630",
+    "data": [
+      {
+        "id": "IMAGE-1",
+        "path": "/images/banner.png",
+        "type": 3,
+        "startX": 1258.815020494058,
+        "startY": 446.98027274977994,
+        "width": 138,
+        "height": 1114,
+        "order": 1,
+        "translate": "translate(411.607px, -571.198px)"
+      },
+      {
+        "id": "IMAGE-0",
+        "path": "/images/logo.png",
+        "type": 3,
+        "startX": 1616.2234711982835,
+        "startY": 133.51548401738555,
+        "width": 262,
+        "height": 170,
+        "order": 0,
+        "translate": "translate(2.92959px, -101.07px)"
+      },
+      {
+        "id": "MARQUEE-2",
+        "type": 4,
+        "startX": 21.06854162081866,
+        "startY": 987.487315003301,
+        "width": 1920,
+        "height": 63,
+        "backgroundColor": "#ffe000",
+        "text": "適逢櫻花季，不少港人都到日本賞櫻，但無論幾想賞櫻，都應該專重他人同樣有賞櫻的權利，近日，在新宿御苑櫻花盛開之際，有網民目擊一名港女不但打尖拍照，更用腳架攻擊排隊的男子，港女的惡行令人側目。網友於FB群組「HK Express香港快運及旅行資訊關注組」發文，表示3月25日於新宿御苑賞櫻期間目睹一名港女惡行。",
+        "color": "#000000",
+        "fontSize": 40,
+        "fontWeight": "bold",
+        "translate": "translate(-21.113px, 30.6538px)"
+      },
+      {
+        "id": "TEXT-3",
+        "type": 1,
+        "startX": 343.3220627475792,
+        "startY": 303.430976975132,
+        "fontSize": 51,
+        "width": 53,
+        "lineHeight": 1,
+        "color": "#ffffff",
+        "order": 3,
+        "fontWeight": "bold",
+        "text": "港女東京為賞櫻用腳架打人!",
+        "translate": "translate(1369.58px, -55.662px)"
+      }
+    ]
+  },
+  {
+    "id": 1,
+    "name": "202404020130",
+    "data": [
+      {
+        "id": "IMAGE-1",
+        "path": "/images/banner.png",
+        "type": 3,
+        "startX": 1258.815020494058,
+        "startY": 446.98027274977994,
+        "width": 138,
+        "height": 1114,
+        "order": 1,
+        "translate": "translate(411.607px, -571.198px)"
+      },
+      {
+        "id": "IMAGE-0",
+        "path": "/images/logo.png",
+        "type": 3,
+        "startX": 1616.2234711982835,
+        "startY": 133.51548401738555,
+        "width": 255,
+        "height": 166,
+        "order": 0,
+        "translate": "translate(-0.000433px, -89.3516px)"
+      },
+      {
+        "id": "MARQUEE-2",
+        "type": 4,
+        "startX": 21.06854162081866,
+        "startY": 987.487315003301,
+        "width": 1920,
+        "height": 63,
+        "backgroundColor": "#ffe000",
+        "text": "適逢櫻花季，不少港人都到日本賞櫻，但無論幾想賞櫻，都應該專重他人同樣有賞櫻的權利，近日，在新宿御苑櫻花盛開之際，有網民目擊一名港女不但打尖拍照，更用腳架攻擊排隊的男子，港女的惡行令人側目。網友於FB群組「HK Express香港快運及旅行資訊關注組」發文，表示3月25日於新宿御苑賞櫻期間目睹一名港女惡行。",
+        "color": "#000000",
+        "fontSize": 40,
+        "fontWeight": "bold",
+        "translate": "translate(-21.113px, 30.6538px)"
+      },
+      {
+        "id": "TEXT-3",
+        "type": 1,
+        "startX": 343.3220627475792,
+        "startY": 303.430976975132,
+        "fontSize": 51,
+        "width": 53,
+        "lineHeight": 1,
+        "color": "#ffffff",
+        "order": 3,
+        "fontWeight": "bold",
+        "text": "港女東京為賞櫻用腳架打人",
+        "translate": "translate(1369.58px, -55.662px)"
+      },
+      {
+        "id": "IMAGE-5",
+        "path": "/images/liveshow.png",
+        "type": 3,
+        "startX": 369.6882599306778,
+        "startY": 167.20562486245598,
+        "width": 299,
+        "height": 145,
+        "order": 5,
+        "translate": "translate(-310.537px, -117.184px)"
+      },
+      {
+        "id": "MARQUEE-8",
+        "type": 4,
+        "startX": 10.815020494058098,
+        "startY": 933.2901319047095,
+        "width": 1920,
+        "height": 56,
+        "backgroundColor": "#0028ff",
+        "text": "不少香港人在想不到要吃甚麼的時候，都會選擇吃譚仔米線，不僅價廉物美，而且附近總有幾間分店，但近日有不少網民均質疑譚仔雲南米線更換供應商，食物質素普遍下降，更直言「我唔會再去食譚仔了」。",
+        "color": "#ffffff",
+        "fontSize": 40,
+        "fontWeight": "bold",
+        "translate": "translate(-11.023px, 28.9577px)"
+      }
+    ]
+  }
+]

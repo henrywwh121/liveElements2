@@ -4,6 +4,7 @@ import SelectTool from "./SelectTool/SelectTool";
 import ImageTool from "./ImageTool/ImageTool";
 import MarqueeTool from "./MarqueeTool/MarqueeTool";
 import LayerTool from "./LayerTool/LayerTool";
+import SaveTool from "./SaveTool/SaveTool";
 
 const ToolsMenuBar = () => {
   return (
@@ -14,6 +15,7 @@ const ToolsMenuBar = () => {
       <ImageTool />
       <MarqueeTool />
       <LayerTool />
+      <SaveTool />
     </div>
   );
 };

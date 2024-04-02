@@ -100,7 +100,19 @@ export const moveableResize = (e, targets) => {
 };
 
 export const moveableResizeEnd = (e, targets) => {
-  if (targetsAreType(targets, "TEXT")) {
-    e.target.style.height = "";
+  if (targetsHasType(targets, "TEXT")) {
+    if (e.target.classList[0].split("-")[0] == "TEXT") {
+      e.target.style.height = "";
+    }
   }
+};
+
+export const moveableDragEnd = (e) => {
+  store.dispatch(
+    setSelectedElementsValue({
+      id: [e.target.classList[0]],
+      attribute: "translate",
+      value: e.target.style.transform,
+    })
+  );
 };

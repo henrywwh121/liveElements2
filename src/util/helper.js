@@ -1,4 +1,5 @@
 import { targetIds } from "../components/Canvas/moveableEvents";
+import { Tools } from "../components/Tools/ToolsConstants";
 
 export const rgbToHex = (rgb) => {
   const regex = /(\d{1,3}),\s*(\d{1,3}),\s*(\d{1,3})/;
@@ -12,15 +13,33 @@ export const rgbToHex = (rgb) => {
 };
 
 export const hasSameAttribute = (selected, attribute) => {
-  if (selected.length == 0) {
+  //get the correct elements first
+  let filterStr = [];
+  if (
+    attribute == "fontWeight" ||
+    attribute == "fontSize" ||
+    attribute == "color"
+  ) {
+    filterStr = ["TEXT", "MARQUEE"];
+  } else if (attribute == "backgroundColor") {
+    filterStr = ["RECT", "MARQUEE"];
+  } else if (attribute == "lineHeight") {
+    filterStr = ["TEXT"];
+  }
+
+  const filtered = selected.filter((e) => {
+    return filterStr.includes(e.classList[0].split("-")[0]);
+  });
+
+  if (filtered.length == 0) {
     return null;
   }
-  if (selected.length == 1) {
-    return selected[0].style[attribute];
+  if (filtered.length == 1) {
+    return filtered[0].style[attribute];
   } else {
-    const common = selected[0].style[attribute];
+    const common = filtered[0].style[attribute];
     let hasDifference = false;
-    selected.forEach((element) => {
+    filtered.forEach((element) => {
       if (element.style[attribute] != common) {
         hasDifference = true;
         return false;
@@ -55,16 +74,36 @@ export const hasSameAttributeInElementList = (
   elementsList
 ) => {
   const idsLists = targetIds(selected);
-  const selectedElements = elementsList.filter((e) => idsLists.includes(e.id));
+  let selectedElements = elementsList.filter((e) => idsLists.includes(e.id));
+
+  let filterStr = [];
+  if (
+    attribute == "fontWeight" ||
+    attribute == "fontSize" ||
+    attribute == "color"
+  ) {
+    filterStr = [Tools.TEXT, Tools.MARQUEE];
+  } else if (attribute == "backgroundColor") {
+    filterStr = [Tools.RECTANGLE, Tools.MARQUEE];
+  } else if (attribute == "lineHeight") {
+    filterStr = [Tools.TEXT];
+  } else if (attribute == "text") {
+    filterStr = [Tools.MARQUEE];
+  }
+
+  const filtered = selectedElements.filter((e) => {
+    return filterStr.includes(e.type);
+  });
+
   if (selected.length == 0) {
     return null;
   }
   if (selected.length == 1) {
-    return selectedElements[0][attribute];
+    return filtered[0][attribute];
   } else {
-    const common = selectedElements[0][attribute];
+    const common = filtered[0][attribute];
     let hasDifference = false;
-    selectedElements.forEach((element) => {
+    filtered.forEach((element) => {
       if (element[attribute] != common) {
         hasDifference = true;
         return false;

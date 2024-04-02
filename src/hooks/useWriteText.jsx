@@ -23,6 +23,7 @@ const useWriteText = (canvasOffSetX, canvasOffSetY, scale) => {
         order: elementOrder,
         fontWeight: ToolsAttributes.FONTWEIGHT,
         text: ToolsAttributes.TEXT,
+        translate: "translate(0px,0px)",
       })
     );
   };

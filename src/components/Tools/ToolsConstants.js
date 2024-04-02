@@ -6,6 +6,7 @@ export const Tools = {
   MARQUEE: 4,
   FULLSCREEN: 5,
   LAYER: 6,
+  SAVE: 7,
 };
 
 export const ToolsAttributes = {

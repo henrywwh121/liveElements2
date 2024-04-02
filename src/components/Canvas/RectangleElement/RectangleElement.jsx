@@ -9,7 +9,8 @@ const RectangleElement = ({ data }) => {
         top: `${data.startY}px`,
         width: `${data.width}px`,
         height: `${data.height}px`,
-        backgroundColor: `${data.backgroundColor}`
+        backgroundColor: `${data.backgroundColor}`,
+        transform: `${data.translate}`,
       }}
     />
   );

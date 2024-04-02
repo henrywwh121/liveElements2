@@ -6,9 +6,9 @@ import MarqueeElement from "./MarqueeElement/MarqueeElement";
 import { useSelector } from "react-redux";
 
 const RenderElements = ({ moveableRef }) => {
-  const elementsList = useSelector((state) => state.elements.elementsList);
+  let elementsList = useSelector((state) => state.elements.elementsList);
 
-  console.log(elementsList);
+  console.log(JSON.stringify(elementsList));
 
   return (
     <>

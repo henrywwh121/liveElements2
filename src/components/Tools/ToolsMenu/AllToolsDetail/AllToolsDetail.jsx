@@ -4,6 +4,7 @@ import LineHeight from "./LineHeight/LineHeight";
 import DropImages from "./DropImages/DropImages";
 import InnerText from "./InnerText/InnerText";
 import Layer from "./Layer/Layer";
+import LoadSave from "./LoadSave/LoadSave";
 import { Tools } from "../../ToolsConstants";
 import { useSelector } from "react-redux";
 
@@ -22,6 +23,7 @@ const AllToolsDetail = () => {
       {adjMode == 3 && selectedElements.length > 0 && <LineHeight />}
       {adjMode == 4 && selectedElements.length > 0 && <InnerText />}
       {toolsMode == Tools.LAYER && <Layer />}
+      {toolsMode == Tools.SAVE && <LoadSave />}
     </div>
   );
 };

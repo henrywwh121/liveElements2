@@ -18,6 +18,7 @@ import {
   moveableResize,
   targetCount,
   moveableResizeEnd,
+  moveableDragEnd,
   targetIds,
 } from "./moveableEvents";
 
@@ -146,6 +147,7 @@ const Canvas = () => {
         target={targets}
         draggable={mode == Tools.SELECT}
         resizable={true}
+        rotatable={true}
         verticalGuidelines={[canvasRect?.x - 360, canvasRect?.right - 360]}
         horizontalGuidelines={[canvasRect?.y - 100, canvasRect?.bottom - 100]}
         keepRatio={targetCount(targets)}
@@ -171,6 +173,9 @@ const Canvas = () => {
         onDrag={(e) => {
           e.target.style.transform = e.transform;
         }}
+        onDragEnd={(e) => {
+          moveableDragEnd(e, targets);
+        }}
         onResize={(e) => {
           moveableResize(e, targets);
         }}
@@ -179,6 +184,11 @@ const Canvas = () => {
         }}
         onRotate={(e) => {
           e.target.style.transform = e.drag.transform;
+        }}
+        onRotateGroup={(e) => {
+          e.events.forEach((ev) => {
+            ev.target.style.transform = ev.drag.transform;
+          });
         }}
       />
       <Selecto

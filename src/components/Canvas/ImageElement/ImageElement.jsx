@@ -10,6 +10,7 @@ const ImageElement = ({ data }) => {
         top: `${data.startY}px`,
         width: `${data.width}px`,
         height: `${data.height}px`,
+        transform: `${data.translate}`,
       }}
     />
   );

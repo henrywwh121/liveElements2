@@ -17,19 +17,21 @@ const BackgroundColorSelect = () => {
   const [hex, setHex] = useState();
 
   useEffect(() => {
-    selectedElements.forEach((element) => {
-      if (element.style.backgroundColor != "") {
-        element.style.backgroundColor = hex;
-      }
-    });
+    if (hex) {
+      selectedElements.forEach((element) => {
+        if (element.style.backgroundColor != "") {
+          element.style.backgroundColor = hex;
+        }
+      });
 
-    dispatch(
-      setSelectedElementsValue({
-        id: targetIds(selectedElements),
-        attribute: "backgroundColor",
-        value: hex,
-      })
-    );
+      dispatch(
+        setSelectedElementsValue({
+          id: targetIds(selectedElements),
+          attribute: "backgroundColor",
+          value: hex,
+        })
+      );
+    }
   }, [hex]);
 
   useEffect(() => {
