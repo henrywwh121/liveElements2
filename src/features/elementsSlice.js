@@ -57,6 +57,9 @@ const elementsSlice = createSlice({
     setContainerRef: (state, action) => {
       state.containerRef = action.payload;
     },
+    setElementOrder: (state, action) => {
+      state.elementOrder = action.payload;
+    },
   },
 });
 
@@ -69,4 +72,5 @@ export const {
   setSelectedElementsValue,
   modifySelectedElementsValue,
   setContainerRef,
+  setElementOrder,
 } = elementsSlice.actions;
